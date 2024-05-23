@@ -1,5 +1,25 @@
-import React from "react";
+import { prisma } from "@/src/lib/prisma";
+import CategoriesIcons from "../ui/CategoriesIcons";
+import Logo from "../ui/Logo";
 
-export default function OrderSidebar() {
-  return <aside className=" md:w-72 md:h-screen bg-white">OrderSlider</aside>;
+async function getCategories() {
+  return await prisma.category.findMany();
+}
+
+export default async function OrderSidebar() {
+  const categories = await getCategories();
+
+  return (
+    <>
+      <aside className=" md:w-72 lg:h-screen bg-white pt-4">
+        <Logo />
+        <nav>
+          {categories.map((category) => (
+            <CategoriesIcons key={category.id} category={category} />
+          ))}
+        </nav>
+      </aside>
+      ;
+    </>
+  );
 }

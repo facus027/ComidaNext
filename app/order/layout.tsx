@@ -1,5 +1,6 @@
 import OrderSidebar from "@/components/order/OrderSidebar";
 import OrderSumary from "@/components/order/OrderSumary";
+import ToastifyNotification from "@/components/ui/ToastifyNotification";
 import React from "react";
 
 export default function layout({
@@ -18,6 +19,8 @@ export default function layout({
 
         <OrderSumary />
       </div>
+
+      <ToastifyNotification />
     </>
   );
 }
