@@ -1,7 +1,8 @@
-"use serve";
+"use server";
 
 import { prisma } from "@/src/lib/prisma";
 import { ProductSchema } from "@/src/schema";
+import { revalidatePath } from "next/cache";
 
 export async function createProduct(data: unknown) {
   const result = ProductSchema.safeParse(data);
@@ -14,4 +15,5 @@ export async function createProduct(data: unknown) {
   await prisma.product.create({
     data: result.data,
   });
+  revalidatePath("/admin/products");
 }
