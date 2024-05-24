@@ -15,7 +15,7 @@ export default function OrdersPage() {
     url,
     fetcher,
     {
-      refreshInterval: 60000,
+      refreshInterval: 10000,
       revalidateOnFocus: false,
     }
   );
